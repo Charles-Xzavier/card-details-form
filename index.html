@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+
+    <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet" />
+
+    <link rel="stylesheet" href="style.css" />
+
+    <title>Interactive card details form</title>
+  </head>
+  <body>
+    <main class="container">
+      <section class="card-section">
+        <div class="cards">
+          <!-- front card -->
+          <div class="front-card">
+            <img src="./images/card-logo.svg" alt="logo" class="card-logo" />
+            <img src="./images/mastercard.svg" alt="card-company" class="card-company hidden" />
+
+            <div class="card-container">
+              <img src="./images/bg-card-front.png" alt="card front" />
+              <h1 id="number">0000 0000 0000 0000</h1>
+              <div class="card-info">
+                <span id="name">Mike Adeola</span>
+                <span id="date"> <span id="month">00</span> / <span id="year">00</span> </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- back card -->
+          <div class="back-card">
+            <img src="./images/bg-card-back.png" alt="back card" />
+            <span id="cvc">000</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- form section -->
+      <section class="form-section">
+        <form action="">
+          <div class="block-1">
+            <label for="input-name">Cardholder Name</label>
+            <input type="text" name="Cardholder Name" id="input-name" placeholder="e.g. Mike Adeola" required />
+            <p class="card-name-error error">Cardholder's name required</p>
+          </div>
+          <div class="block-2">
+            <label for="input-number">Card Number</label>
+            <input
+              type="text"
+              name="Card Number"
+              id="input-number"
+              placeholder="e.g. 1234 5678 9123 0000"
+              maxlength="16"
+              minlength="16"
+              oninput="if (this.value.length > this.maxlength) this.value = this.value.slice(0, this.maxlength)"
+              required
+            />
+            <p class="card-number-error error">Wrong format, numbers only</p>
+            <p class="card-number-blank-error error">Card number required</p>
+          </div>
+          <div class="block-3">
+            <div class="date-block">
+              <label>Exp. Date (MM/YY)</label>
+              <div class="two-boxes-input">
+                <div>
+                  <input
+                    type="text"
+                    name="month"
+                    placeholder="MM"
+                    id="input-month"
+                    oninput="if (this.value.length > this.maxlength) this.value = this.value.slice(0, this.maxlength)"
+                    maxlength="2"
+                    minlength="2"
+                    required
+                  />
+                </div>
+                <!-- year -->
+                <div>
+                  <input
+                    type="text"
+                    name="year"
+                    placeholder="YY"
+                    id="input-year"
+                    oninput="if (this.value.length > this.maxlength) this.value = this.value.slice(0, this.maxlength)"
+                    maxlength="2"
+                    minlength="2"
+                    required
+                  />
+                </div>
+              </div>
+              <p class="blank-error error">Can't be blank</p>
+              <p class="month-error error">Month doesn't exist</p>
+              <p class="year-error error">Incorrect year</p>
+            </div>
+
+            <div class="cvc-block">
+              <label for="input-cvc">CVV</label>
+              <input
+                type="text"
+                name="CVC"
+                placeholder="e.g. 123"
+                id="input-cvc"
+                oninput="if (this.value.length > this.maxlength) this.value = this.value.slice(0, this.maxlength)"
+                maxlength="3"
+                required
+              />
+
+              <p class="cvc-error error">Can't be blank</p>
+            </div>
+          </div>
+          <button id="submit-btn" type="submit">Confirm</button>
+        </form>
+
+        <!-- completed state -->
+        <div class="thank-you hidden">
+          <img src="./images/icon-complete.svg" alt="completed" />
+          <h1>Thank you!</h1>
+          <p>We've added your card details</p>
+          <button id="continue-btn">Continue</button>
+        </div>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
